@@ -3,7 +3,6 @@ package com.bridgelabz;
 import java.sql.*;
 import java.util.*;
 
-
 public class AddressBook
 {
     Connection connection;
@@ -32,7 +31,7 @@ public class AddressBook
         List<Contacts> addressBookList = new ArrayList<Contacts>();
         try (Connection connection = getConnection()) {
             Statement statement = connection.createStatement();
-            String sql = "select * from com.bridgelabz.AddressBook";
+            String sql = "select * from AddressBook";
             resultSet = statement.executeQuery(sql);
             int count = 0;
             while (resultSet.next()) {
@@ -56,6 +55,19 @@ public class AddressBook
         }
         return addressBookList;
 
+    }
+    public void updateCityByZip(String address, String city, String state, int zip, int srNo) {
+        try (Connection connection = getConnection()) {
+            Statement statement = connection.createStatement();
+            String query = "Update addressBook set address=" + "'" + address + "'" + ", " + "city=" + "'" + city + "'" + ", " + "state=" + "'" + state + "'" + ", " + "zip=" + zip + " where srNo=" + srNo + ";";
+            int result = statement.executeUpdate(query);
+            System.out.println(result);
+            if (result > 0) {
+                System.out.println("Address Updated Successfully");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     }
 
