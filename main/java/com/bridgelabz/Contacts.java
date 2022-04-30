@@ -107,7 +107,7 @@ public class Contacts
 
     @Override
     public String toString() {
-        return "com.bridgelabz.Contacts{" +
+        return "Contacts{" +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", address='" + address + '\'' +
