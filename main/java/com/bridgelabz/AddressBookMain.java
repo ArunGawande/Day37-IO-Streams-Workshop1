@@ -1,7 +1,9 @@
 package com.bridgelabz;
 
+import java.time.LocalDate;
 import java.util.*;
-import java.util.stream.Collectors;
+
+import static jdk.jfr.internal.consumer.EventLog.update;
 
 public class AddressBookMain {
     static Scanner scanner = new Scanner(System.in);
@@ -10,28 +12,29 @@ public class AddressBookMain {
 
         boolean exit = false;
         while (!exit) {
-            System.out.println(" Press\n 1 ->  Retrieve data\n 2 -> Exit");
-            switch (scanner.nextInt()) {
+            System.out.println(" Press\n 1 ->  Retrieve data\n 2 -> Update Address,city,state,zip  by srNo\n " +
+                    "3 Retrieve data for particular date" +
+                    "-> \n 4 -> exit");
+            int choice = scanner.nextInt();
+            switch (choice) {
                 case 1:
                     retrieveData();
                     break;
                 case 2:
+                    update();
+                    break;
+                case 3:
+                    reteriveDataForParticularDate();
+                    break;
+                case 4:
                     exit = true;
             }
         }
     }
 
-    private static void retrieveData() {
-        AddressBook addressBookRepo = new AddressBook();
-        List<Contacts> employeeInfoList = addressBookRepo.retrieveData();
-        for (Contacts employee : employeeInfoList
-        ) {
-            System.out.println(employee + "\n");
-        }
+    private static void reteriveDataForParticularDate() {
     }
-    private static void updateCity() {
-        AddressBook addressBookRepo = new AddressBook();
-        System.out.println("Enter the address,city,state, zip and Serial Number  to Update");
-        addressBookRepo.updateCityByZip(scanner.next(), scanner.next(), scanner.next(), scanner.nextInt(), scanner.nextInt());
+
+    private static void retrieveData() {
     }
 }
